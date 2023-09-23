@@ -6,19 +6,18 @@ ch1_size=[137,137]
 ch1_frame,ch1_per=24,[6,6,6,6]
 ch=load_image('character_v2.png')
 ch_size=[32,32]
-ch_frame,ch_per=[13,8],[13,8,10,10,10,6,4,7]
+ch_frame,ch_per=[13,8],[7,4,6,10,10,10,8,13]
 x,y=400,300
 frame,frame_per=0,0
 while(True):
     clear_canvas()
-    width,height=ch_size
-    ch.clip_draw((frame%ch_frame[0])*ch_size[0],(frame//ch_frame[0])*ch_size[1],width,height,x,y)
-    if((frame)%13-1==ch_per[frame_per]-1):
-        frame+=13-ch_per[frame_per]
-        frame_per=(frame_per+1)%len(ch_per)
+    print(frame, ch_per[frame_per],frame_per)
+    ch.clip_draw((frame%ch_frame[0])*ch_size[0],(frame//ch_frame[0])*ch_size[1],ch_size[0],ch_size[1],x,y)
     frame=(frame+1)%(ch_frame[0]*ch_frame[1])
-    print(frame)
+    if((frame)%ch_frame[0]==ch_per[frame_per]%ch_frame[0]):
+        frame+=ch_frame[0]-ch_per[frame_per]
+        frame_per=(frame_per+1)%len(ch_per)
     update_canvas()
-    delay(0.1)
+    delay(0.05)
     get_events()
 close_canvas()
