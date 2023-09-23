@@ -16,4 +16,5 @@ while(True):
     update_canvas()
     delay(0.05)
     get_events()
+
 close_canvas()
