@@ -6,8 +6,10 @@ x,y=400,300
 frame=0
 while(True):
     clear_canvas()
-    character.clip_draw(frame*137+1,0,135,135,x,y)
-    frame=(frame+1)%6
+    character.clip_draw((frame%6)*137+1,(frame//6)*137,135,135,x,y)
+    frame=(frame+1)%24
+    print(frame)
     update_canvas()
+    delay(0.1)
     get_events()
 close_canvas()
