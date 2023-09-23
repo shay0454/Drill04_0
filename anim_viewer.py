@@ -1,11 +1,17 @@
 from pico2d import *
 open_canvas()
 os.chdir('c:\\github\\2Dprogramming\\Drill04')
-character=load_image('moving_character.png')
+character1=load_image('moving_character.png')
+character1_size=[137,137]
+character1_frame,character1_per=24,[6,6,6,6]
+character=load_image('character_v2')
+character_size=[32,32]
+character_frame,character_per=13*8,[13,8,10,10,10,6,4,7]
 x,y=400,300
 frame=0
 while(True):
     clear_canvas()
+    width,height=character1_size
     character.clip_draw((frame%6)*137+1,(frame//6)*137,135,135,x,y)
     frame=(frame+1)%24
     print(frame)
